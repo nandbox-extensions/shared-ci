@@ -58,6 +58,8 @@ jobs:
           curl -X POST ${{ secrets.WEBHOOK_URL }} \
             -H "Content-Type: application/json" \
             -d '{
-              "bot_name": "${{ github.repository }}",
-              "tag": "${{ github.ref_name }}-${{ github.sha }}"
+             "username": "${{ github.repository_owner }}",
+              "repoName": "${{ github.event.repository.name }}",
+              "branch": "${{ github.ref_name }}",
+              "tag": "${{ github.sha }}"
             }'
